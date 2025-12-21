@@ -21,16 +21,16 @@ public class PaymentController {
     private final PaymentRepository paymentRepository;
     private final SubscriptionCodeService subscriptionCodeService;
 
-    @GetMapping(value = "/payment")
-    public String payment() {
-        SessionDTO sessionDTO = stripeService.createPaymentSession(50);
-        Payment payment = new Payment();
-        payment.setUid(sessionDTO.getId());
-        payment.setStatus("pending");
-        payment.setSessionId(sessionDTO.getSession().getId());
-        paymentRepository.save(payment);
-        return "redirect:" + sessionDTO.getSession().getUrl();
-    }
+//    @GetMapping(value = "/payment")
+//    public String payment() {
+//        SessionDTO sessionDTO = stripeService.createPaymentSession(50);
+//        Payment payment = new Payment();
+//        payment.setUid(sessionDTO.getId());
+//        payment.setStatus("pending");
+//        payment.setSessionId(sessionDTO.getSession().getId());
+//        paymentRepository.save(payment);
+//        return "redirect:" + sessionDTO.getSession().getUrl();
+//    }
 
     @GetMapping(value = "/payment/{status}/{id}")
     public String payment(@PathVariable("status") String status, @PathVariable("id") String id, Model model) {
